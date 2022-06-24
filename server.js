@@ -21,10 +21,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  console.log('in the next middleware');
-  next();
-});
 
 app.use(morgan('dev'));
 
@@ -40,6 +36,12 @@ app.get('/', (req, res) => {
     {title: 'How to defeat bowser', snippet: 'Lorem ipsum dolor sit amet consectetur'},
   ];
   res.render('index', { title: 'Home', blogs });
+});
+
+
+app.use((req, res, next) => {
+  console.log('in the next middleware');
+  next();
 });
 
 app.get('/about', (req, res) => {
